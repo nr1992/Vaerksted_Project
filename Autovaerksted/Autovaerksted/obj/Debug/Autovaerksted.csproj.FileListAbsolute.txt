@@ -1,0 +1,6 @@
+c:\users\nr\source\repos\Autovaerksted\Autovaerksted\bin\Debug\Autovaerksted.exe
+c:\users\nr\source\repos\Autovaerksted\Autovaerksted\bin\Debug\Autovaerksted.pdb
+c:\users\nr\source\repos\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.csprojAssemblyReference.cache
+c:\users\nr\source\repos\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.csproj.CoreCompileInputs.cache
+c:\users\nr\source\repos\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.exe
+c:\users\nr\source\repos\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.pdb
