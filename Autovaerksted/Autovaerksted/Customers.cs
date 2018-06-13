@@ -8,16 +8,16 @@ namespace Autovaerksted
 {
     class Customers
     {
-        public static void AddCustomer(string Fornavn, string Efternavn, string Adresse, int PostNr, string Email, string Mobil)
+        public static void AddCustomer(string Firstname, string Lastname, string CustomerAddress, int ZipCode, string Email, string Mobile, DateTime CreateDate)
         {
             var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd;
             connection.Open();
             try
             {
-                cmd = connection.CreateCommand(); cmd.CommandText = "INSERT INTO Kunder(Fornavn, Efternavn, Adresse, PostNr, Email, Mobil) values('" + Fornavn + "', '" + Efternavn + "', '" + Adresse + "', '" + PostNr + "', '" + Email + "', '" + Mobil + "');";
+                cmd = connection.CreateCommand(); cmd.CommandText = "INSERT INTO Customers(Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile, CreateDate) values('" + Firstname + "', '" + Lastname + "', '" + CustomerAddress + "', '" + ZipCode + "', '" + Email + "', '" + Mobile + "', '" + CreateDate + "');";
                 cmd.ExecuteNonQuery();
-                Console.WriteLine($"Tilføjede {Fornavn} {Efternavn} {Adresse} {PostNr} {Email} {Mobil} til kunde databasen");
+                Console.WriteLine($"Tilføjede {Firstname} {Lastname} {CustomerAddress} {ZipCode} {Email} {Mobile} til kunde databasen");
                 Console.ReadKey();
             }
             catch (Exception)
@@ -35,13 +35,13 @@ namespace Autovaerksted
         
         public static void DeleteCustomer(int i)
         {
-            DeleteCars(i);
+            Cars.DeleteCars(i);
 
 
             var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd; connection.Close();
 
-            cmd = new SqlCommand("DELETE FROM Kunder WHere KundeId=@i", connection);
+            cmd = new SqlCommand("DELETE FROM Customers WHere CustomerId=@i", connection);
             cmd.Parameters.Add("@i", System.Data.SqlDbType.Int); cmd.Parameters["@i"].Value = i;
             connection.Open();
             int slettet = cmd.ExecuteNonQuery();
@@ -61,7 +61,7 @@ namespace Autovaerksted
         {
             SqlConnection connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
             {
-                connection.Open(); using (SqlCommand command = new SqlCommand("SELECT * FROM Kunder", connection))
+                connection.Open(); using (SqlCommand command = new SqlCommand("SELECT * FROM Customers", connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -80,7 +80,7 @@ namespace Autovaerksted
         {
             SqlConnection connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
             {
-                connection.Open(); using (SqlCommand command = new SqlCommand("select k.kundeid, k.fornavn + ' ' + efternavn as 'Navn', b.Maerke , b.model, b.aargang from kunder AS k join KunderBilerRelation AS kbr ON k.kundeid = kbr.kundeid join biler b ON b.regnr = kbr.regnr", connection))
+                connection.Open(); using (SqlCommand command = new SqlCommand("select k.CustomerId, k.Firstname + ' ' + Lastname as 'Navn', b.Brand , b.model, b.CarYear from Customers AS k join Cars b ON b.CustomerId = k.CustomerId", connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {

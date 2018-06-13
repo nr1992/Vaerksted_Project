@@ -8,16 +8,16 @@ namespace Autovaerksted
 {
     class Cars
     {
-        public static void AddCar(string Maerke, string Model, string Aargang, int Km, string Braendstoftype, int KundeId)
+        public static void AddCar(string Brand, string Model, string CarYear, int Miles, string EngineType, int CustomerId)
         {
             var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd;
             connection.Open();
             try
             {
-                cmd = connection.CreateCommand(); cmd.CommandText = "INSERT INTO Kunder(Fornavn, Efternavn, Adresse, PostNr, Email, Mobil) values('" + Maerke + "', '" + Model + "', '" + Aargang + "', '" + Km + "', '" + Braendstoftype + "', '" + KundeId + "');";
+                cmd = connection.CreateCommand(); cmd.CommandText = "INSERT INTO Cars(Brand, Model, CarYear, Miles, EngineType, CustomerId) values('" + Brand + "', '" + Model + "', '" + CarYear + "', '" + Miles + "', '" + EngineType + "', '" + CustomerId + "');";
                 cmd.ExecuteNonQuery();
-                Console.WriteLine($"Tilføjede {Maerke} {Model} {Aargang} {Km} {Braendstoftype} {KundeId} til kunde databasen");
+                Console.WriteLine($"Tilføjede {Brand} {Model} {CarYear} {Miles} {EngineType} {CustomerId} til kunde databasen");
                 Console.ReadKey();
             }
             catch (Exception)
@@ -37,7 +37,7 @@ namespace Autovaerksted
         {
             var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd; connection.Close();
-            cmd = new SqlCommand("DELETE FROM Biler WHere KundeId=@i", connection);
+            cmd = new SqlCommand("DELETE FROM Cars WHere CustomerId=@i", connection);
             cmd.Parameters.Add("@i", System.Data.SqlDbType.Int); cmd.Parameters["@i"].Value = i;
             connection.Open();
             int slettet = cmd.ExecuteNonQuery();

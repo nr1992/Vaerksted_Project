@@ -19,23 +19,23 @@ namespace Autovaerksted
 
             //Read.ShowCustomerCars();
 
-            string Fornavn = Console.ReadLine();
-            string Efternavn = Console.ReadLine();
-            string Adresse = Console.ReadLine();
-            int PostNr = int.Parse(Console.ReadLine());
+            string Firstname = Console.ReadLine();
+            string Lastname = Console.ReadLine();
+            string CustomerAddress = Console.ReadLine();
+            int ZipCode = int.Parse(Console.ReadLine());
             string Email = Console.ReadLine();
-            string Mobil = Console.ReadLine();
+            string Mobile = Console.ReadLine();
 
-            Create.AddKunde(Fornavn, Efternavn, Adresse, PostNr, Email, Mobil);
+            Customers.AddCustomer(Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile, DateTime.Now);
 
-            string Maerke = Console.ReadLine();
+            string Brand = Console.ReadLine();
             string Model = Console.ReadLine();
-            string Aargang = Console.ReadLine();
-            int Km = int.Parse(Console.ReadLine());
-            string Braendstoftype = Console.ReadLine();
-            string KundeId = Console.ReadLine();
+            string CarYear = Console.ReadLine();
+            int Miles = int.Parse(Console.ReadLine());
+            string EngineType = Console.ReadLine();
+            int CustomerId = int.Parse(Console.ReadLine());
 
-            Create.AddKunde(Maerke, Model, Aargang, Km, Braendstoftype, KundeId);
+            Cars.AddCar(Brand, Model, CarYear, Miles, EngineType, CustomerId);
 
 
             Console.ReadKey();
