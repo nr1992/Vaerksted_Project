@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Autovaerksted",
+    "\\Autovaerksted\\Autovaerksted"
   ],
+  "SelectedNode": "\\Autovaerksted\\Autovaerksted\\Customers.cs",
   "PreviewInSolutionExplorer": false
 }

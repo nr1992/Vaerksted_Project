@@ -8,14 +8,15 @@ namespace Autovaerksted
 {
     class Customers
     {
-        public static void AddCustomer(string Firstname, string Lastname, string CustomerAddress, int ZipCode, string Email, string Mobile, DateTime CreateDate)
+        public static void AddCustomer(string Firstname, string Lastname, string CustomerAddress, int ZipCode, string Email, string Mobile)
         {
             var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd;
             connection.Open();
             try
             {
-                cmd = connection.CreateCommand(); cmd.CommandText = "INSERT INTO Customers(Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile, CreateDate) values('" + Firstname + "', '" + Lastname + "', '" + CustomerAddress + "', '" + ZipCode + "', '" + Email + "', '" + Mobile + "', '" + CreateDate + "');";
+                cmd = connection.CreateCommand(); 
+                cmd.CommandText = "INSERT INTO Customers (Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile, CreateDate) values ('" + Firstname + "', '" + Lastname + "', '" + CustomerAddress + "', '" + ZipCode + "', '" + Email + "', '" + Mobile + "', GETDATE())";;
                 cmd.ExecuteNonQuery();
                 Console.WriteLine($"Tilføjede {Firstname} {Lastname} {CustomerAddress} {ZipCode} {Email} {Mobile} til kunde databasen");
                 Console.ReadKey();
