@@ -10,6 +10,36 @@ namespace Autovaerksted
     {
         static void Main(string[] args)
         {
+            while (true)
+            {
+                //Slet teskt fra forrige menu
+                Console.Clear();
+
+                Console.WriteLine("Velkommen til Autoværkstedet!");
+                Console.WriteLine("Hvad vil du gøre?\n");
+                Console.WriteLine("1. Tilføj Kunde");
+                Console.WriteLine("2. Slet Kunde");
+
+                string UserChoice = Console.ReadLine();
+
+                switch (UserChoice)
+                {
+                    case "1":
+                        Menu.AddCustomerMenu();
+                        break;
+
+                    case "2":
+                        Menu.DeleteCustomerMenu();
+                        break;
+
+                    default:
+                        Console.WriteLine("Forkert, ugyldigt valg");
+                        Console.ReadKey();
+                        continue;
+                }
+            }
+
+
             //Console.WriteLine("Indtast det KundeId som skal slettes");
             //int i = int.Parse(Console.ReadLine());
 
@@ -17,13 +47,6 @@ namespace Autovaerksted
 
             //Read.ShowCustomerCars();
 
-            string Firstname = Console.ReadLine();
-            string Lastname = Console.ReadLine();
-            string CustomerAddress = Console.ReadLine();
-            int ZipCode = int.Parse(Console.ReadLine());
-            string Email = Console.ReadLine();
-            string Mobile = Console.ReadLine();
-            Customers.AddCustomer(Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile);
 
             //string Brand = Console.ReadLine();
             //string Model = Console.ReadLine();
@@ -34,9 +57,6 @@ namespace Autovaerksted
 
             //Cars.AddCar(Brand, Model, CarYear, Miles, EngineType, CustomerId);
 
-
-
-            Console.ReadKey();
         }
     }
 }
