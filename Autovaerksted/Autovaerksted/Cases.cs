@@ -12,7 +12,7 @@ namespace Autovaerksted
 
         public static void AddCase(int CaseNr, DateTime StartDate, DateTime EndDate, string RegNr)
         {
-            var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
+            var connection = new SqlConnection("Server=.\\UV_SERVER_JHC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd;
             connection.Open();
             try
@@ -37,7 +37,7 @@ namespace Autovaerksted
 
         public static void DeleteCases(string regNr)
         {
-            var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
+            var connection = new SqlConnection("Server=.\\UV_SERVER_JHC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd; connection.Close();
             cmd = new SqlCommand("DELETE FROM Cases WHERE RegNr=@i", connection);
             cmd.Parameters.Add("@i", System.Data.SqlDbType.VarChar); cmd.Parameters["@i"].Value = regNr;

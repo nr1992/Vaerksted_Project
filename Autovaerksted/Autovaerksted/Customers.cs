@@ -9,7 +9,7 @@ namespace Autovaerksted
     class Customers
     {
         //constant kan ikke ændres og giver bedre performance end variabler fordi værdien ikke skal hentes fra memory, men er hard-coded
-        private const string ConnectionString = "Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True";
+        private const string ConnectionString = "Server=.\\UV_SERVER_JHC;Database=Autovaerksted; Integrated Security = True";
 
         public static void AddCustomer(string Firstname, string Lastname, string CustomerAddress, int ZipCode, string Email, string Mobile)
         {

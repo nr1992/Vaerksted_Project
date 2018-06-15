@@ -10,7 +10,7 @@ namespace Autovaerksted
     {
         public static void AddCar(string Brand, string Model, string CarYear, int Miles, string EngineType, int CustomerId)
         {
-            var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
+            var connection = new SqlConnection("Server=.\\UV_SERVER_JHC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd;
             connection.Open();
             try
@@ -35,7 +35,7 @@ namespace Autovaerksted
 
         public static void DeleteCars(int customerId)
         {
-            var connection = new SqlConnection("Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True");
+            var connection = new SqlConnection("Server=.\\UV_SERVER_JHC;Database=Autovaerksted; Integrated Security = True");
             connection.Open();
             SqlCommand cmd = new SqlCommand($"select RegNr from Cars where CustomerId = '{customerId}'", connection);
             using (SqlDataReader reader = cmd.ExecuteReader())

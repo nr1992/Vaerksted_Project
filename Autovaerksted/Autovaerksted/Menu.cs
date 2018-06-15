@@ -10,28 +10,28 @@ namespace Autovaerksted
         public static void AddCustomerMenu()
         {
             bool repeat;
-
+            
             do
             {
                 Console.Clear();
-
+                
                 Console.Write("Fornavn: ");
-                string Firstname = Console.ReadLine();
+                string Firstname = Error_Handling.getStringInput(1, 50, true);
 
-                Console.Write("Efternavn: ");
-                string Lastname = Console.ReadLine();
+                Console.Write("Efternavn: "); 
+                string Lastname = Error_Handling.getStringInput(1, 50, true);
 
                 Console.Write("Adresse: ");
-                string CustomerAddress = Console.ReadLine();
+                string CustomerAddress = Console.ReadLine(); //Skal have en custom errorhandler (bogstaver, tal, mellemrum, tegn)
 
-                Console.Write("Postnr: ");
-                int ZipCode = int.Parse(Console.ReadLine());
+                Console.Write("Postnr: "); //Crasher hvis der ikke er et input
+                int ZipCode = int.Parse(Error_Handling.getNumberInput(4, 4, true));
 
-                Console.Write("Email : ");
-                string Email = Console.ReadLine();
+                Console.Write("Email : "); 
+                string Email = Console.ReadLine(); //Skal have en custom errorhandler (bogstaver, tegn, tal)
 
                 Console.Write("Mobil nummer: ");
-                string Mobile = Console.ReadLine();
+                string Mobile = Error_Handling.getNumberInput(8, 8, true);
 
                 Console.WriteLine("");
                 Customers.AddCustomer(Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile);
@@ -54,13 +54,13 @@ namespace Autovaerksted
         
         public static void DeleteCustomerMenu()
         {
-            Console.WriteLine("Søg efter den kunde du gerne vil slette!");
+            Console.WriteLine("Søg efter den kunde du gerne vil slette!"); //hvad søges der på?
 
             if (Customers.ShowCustomerData(Console.ReadLine()) > 0)
             {
-                Console.WriteLine("Vælg derefter hvilken en af kunder du vil slette efter kundenummer!");
+                Console.WriteLine("Vælg derefter hvilken kunde du vil slette efter kundenummer!");
 
-                Customers.DeleteCustomer(int.Parse(Console.ReadLine()));
+                Customers.DeleteCustomer(int.Parse(Console.ReadLine())); //crasher hvis der ikke er et input.
             }
             else
             {
