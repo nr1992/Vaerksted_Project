@@ -22,13 +22,13 @@ namespace Autovaerksted
                 string Lastname = Error_Handling.getStringInput(1, 50, true);
 
                 Console.Write("Adresse: ");
-                string CustomerAddress = Console.ReadLine(); //Skal have en custom errorhandler (bogstaver, tal, mellemrum, tegn)
+                string CustomerAddress = Error_Handling.getAddressInput(1, 50);
 
-                Console.Write("Postnr: "); //Crasher hvis der ikke er et input
+                Console.Write("Postnr: "); 
                 int ZipCode = int.Parse(Error_Handling.getNumberInput(4, 4, true));
 
-                Console.Write("Email : "); 
-                string Email = Console.ReadLine(); //Skal have en custom errorhandler (bogstaver, tegn, tal)
+                Console.Write("Email : ");
+                string Email = Error_Handling.getEmailInput(1, 255);
 
                 Console.Write("Mobil nummer: ");
                 string Mobile = Error_Handling.getNumberInput(8, 8, true);
