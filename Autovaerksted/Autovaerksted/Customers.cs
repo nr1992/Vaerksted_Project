@@ -11,8 +11,10 @@ namespace Autovaerksted
         //constant kan ikke ændres og giver bedre performance end variabler fordi værdien ikke skal hentes fra memory, men er hard-coded
         private const string ConnectionString = "Server=.\\MSSQL_SCHOOLPRAC;Database=Autovaerksted; Integrated Security = True";
 
+        #region AddCustomer
         public static void AddCustomer(string Firstname, string Lastname, string CustomerAddress, int ZipCode, string Email, string Mobile)
         {
+            //using sørger for at rydde op efter sig selv, når den ryger ud af using{}
             using (var connection = new SqlConnection(ConnectionString))
             {
                 SqlCommand cmd;
@@ -23,7 +25,9 @@ namespace Autovaerksted
                 Console.WriteLine($"Tilføjede :  \nFornavn:{Firstname} -Efternavn:{Lastname} -Adresse:{CustomerAddress} -Postnr:{ZipCode} -Email:{Email} -Mobilnr:{Mobile}\ntil kunde databasen\n");
             }
         }
-        
+        #endregion
+
+        #region DeleteCustomer
         public static void DeleteCustomer(int customerId)
         {
             Cars.DeleteCars(customerId);
@@ -37,7 +41,9 @@ namespace Autovaerksted
             cmd.ExecuteNonQuery();
             connection.Close();
         }
+        #endregion
 
+        #region ShowCustomerData
         public static void ShowCustomerData()
         {
             SqlConnection connection = new SqlConnection(ConnectionString);
@@ -55,13 +61,15 @@ namespace Autovaerksted
                 }
             }
         }
+        #endregion
 
+        #region SearchCustomerData
         public static int ShowCustomerData(string searchString)
         {
             //Opbyg sql query
             string cmdStr = $"select * from Customers where Firstname like '%{searchString}%' or Lastname like '%{searchString}%'" +
                 $" or CustomerAddress like '%{searchString}%' or ZipCode like '%{searchString}%' or Email like '%{searchString}%'" +
-                $"or Mobile like '%{searchString}%'";
+                $" or Mobile like '%{searchString}%'";
 
             //Når man forlader using-blokken rydder den op efter sig selv ved at kalde sin Dispose() metode -> connection.Dispose()
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -86,33 +94,51 @@ namespace Autovaerksted
                 }
             }
         }
+        #endregion
+
+        #region SearchCustomerCarData
+        public static int ShowCustomerCarData(string searchString)
+        {
+            //Opbyg sql query
+            string cmdStr = $"SELECT c.CustomerId, Firstname, Lastname, ZipCode, Email, Mobile, c.CreateDate " +
+                $"FROM customers c JOIN Cars ca ON ca.CustomerId = c.CustomerId WHERE ca.RegNr like '%{searchString}%' " + 
+                $"or ca.Brand like '%{searchString}%' or ca.Model like '%{searchString}%' or ca.CarYear like '%{searchString}%' or ca.EngineType like '%{searchString}%' or ca.Model like '%{searchString}%' " +
+                $"or c.Firstname like '%{searchString}%' or c.Lastname like '%{searchString}%' " +
+                $"ORDER BY Lastname";
+
+            //Når man forlader using-blokken rydder den op efter sig selv ved at kalde sin Dispose() metode -> connection.Dispose()
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(cmdStr, connection))
+                {
+                    //Eksekver sql query
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        //Loop igennem hver række og tæl hvor mange der er
+                        int count = 0;
+                        while (reader.Read())
+                        {
+                            PrintRow(reader);
+                            Cars.ShowCustomerCars((int)reader.GetValue(0));
+                            count++;
+                        }
+
+                        return count;
+                    }
+                }
+            }
+        }
+        #endregion
 
         private static void PrintRow(SqlDataReader reader)
         {
             for (int i = 0; i < reader.FieldCount; i++)
             {
-                Console.WriteLine(reader.GetValue(i));
+                Console.WriteLine($"{reader.GetName(i)}: {reader.GetValue(i)}");
             }
             Console.WriteLine();
-        }
-
-        public static void ShowCustomerCars()
-        {
-            SqlConnection connection = new SqlConnection(ConnectionString);
-            {
-                connection.Open(); using (SqlCommand command = new SqlCommand("select k.CustomerId, k.Firstname + ' ' + Lastname as 'Navn', b.Brand , b.model, b.CarYear from Customers AS k join Cars b ON b.CustomerId = k.CustomerId", connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            for (int i = 0; i < reader.FieldCount; i++)
-                            { Console.WriteLine(reader.GetValue(i)); }
-                            Console.WriteLine();
-                        }
-                    }
-                }
-            }
         }
     }
 }

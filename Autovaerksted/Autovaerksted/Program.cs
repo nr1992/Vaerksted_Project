@@ -18,7 +18,14 @@ namespace Autovaerksted
                 Console.WriteLine("Velkommen til Autoværkstedet!");
                 Console.WriteLine("Hvad vil du gøre?\n");
                 Console.WriteLine("1. Tilføj Kunde");
-                Console.WriteLine("2. Slet Kunde");
+                Console.WriteLine("2. Tilføj Biler");
+                Console.WriteLine("3. Slet Kunde");
+                Console.WriteLine("4. Slet Bil");
+                Console.WriteLine("5. Opdater Bil");
+                Console.WriteLine("6. Vis Kundeoversigt");
+                Console.WriteLine("7. Vis Bil");
+
+
 
                 string UserChoice = Console.ReadLine();
 
@@ -29,7 +36,28 @@ namespace Autovaerksted
                         break;
 
                     case "2":
+                        Menu.AddCarMenu();
+                        break;
+
+                    case "3":
                         Menu.DeleteCustomerMenu();
+                        break;
+
+                    case "4":
+                        Menu.DeleteCarMenu();
+                        break;
+
+                    case "5":
+                        //Virker ikke
+                        Menu.UpdateCarMenu();
+                        break;
+
+                    case "6":
+                        Menu.ShowCustomerMenu();
+                        break;
+
+                    case "7":
+                        Menu.ShowCarMenu();
                         break;
 
                     default:
@@ -38,25 +66,6 @@ namespace Autovaerksted
                         continue;
                 }
             }
-
-
-            //Console.WriteLine("Indtast det KundeId som skal slettes");
-            //int i = int.Parse(Console.ReadLine());
-
-            //delete.deletecustomer(i);
-
-            //Read.ShowCustomerCars();
-
-
-            //string Brand = Console.ReadLine();
-            //string Model = Console.ReadLine();
-            //string CarYear = Console.ReadLine();
-            //int Miles = int.Parse(Console.ReadLine());
-            //string EngineType = Console.ReadLine();
-            //int CustomerId = int.Parse(Console.ReadLine());
-
-            //Cars.AddCar(Brand, Model, CarYear, Miles, EngineType, CustomerId);
-
         }
     }
 }
