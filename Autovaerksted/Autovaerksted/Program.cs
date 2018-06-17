@@ -48,7 +48,6 @@ namespace Autovaerksted
                         break;
 
                     case "5":
-                        //Virker ikke
                         Menu.UpdateCarMenu();
                         break;
 

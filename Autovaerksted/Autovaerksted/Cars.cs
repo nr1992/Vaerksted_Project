@@ -187,10 +187,7 @@ namespace Autovaerksted
                     {
                         while (reader.Read())
                         {
-                            for (int i = 0; i < reader.FieldCount; i++)
-                            {
-                                PrintRow(reader);
-                            }
+                            PrintRow(reader);
                             Console.WriteLine();
                         }
                     }
