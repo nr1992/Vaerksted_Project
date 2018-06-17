@@ -8,7 +8,7 @@ namespace Autovaerksted
 {
     class Cars
     {
-        public static void AddCar(string Brand, string Model, string CarYear, int Miles, string EngineType, int CustomerId)
+        public static void AddCar( string Brand, string Model, string CarYear, int Miles, string EngineType, int CustomerId)
         {
             var connection = new SqlConnection("Server=.\\UV_SERVER_JHC;Database=Autovaerksted; Integrated Security = True");
             SqlCommand cmd;

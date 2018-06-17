@@ -81,14 +81,14 @@ namespace Autovaerksted
 
         }
 
-        public static string getAddressInput(int minCharacters, int maxCharacters)
+        public static string getMixedInput(int minCharacters, int maxCharacters, string allowedChars)
         {
             //object that takes input from the keyboard
             string StringToTest = "";
 
             bool inputNotGood = true;
 
-            string pattern = @"^([A-Za-z0-9,. ])+$";
+            string pattern = @"^("+allowedChars+")+$";
             Regex Address = new Regex(pattern);
 
             while (inputNotGood)
@@ -117,40 +117,6 @@ namespace Autovaerksted
             return StringToTest;
         }
 
-        public static string getEmailInput(int minCharacters, int maxCharacters)
-        {
-            //object that takes input from the keyboard
-            string StringToTest = "";
-
-            bool inputNotGood = true;
-
-            string pattern = @"^([A-Za-z0-9.!#$%&'*+-/=?^_`{|}~@])+$";
-            Regex Address = new Regex(pattern);
-
-            while (inputNotGood)
-            {
-                //reads line from keyboard and puts in "StringToTest"
-
-                StringToTest = Console.ReadLine();
-
-                if (StringToTest.Length <= maxCharacters && StringToTest.Length >= minCharacters)
-                {
-                    //input still good
-                    inputNotGood = false;
-                }
-
-                if (Address.IsMatch(StringToTest))
-                {
-                    inputNotGood = false;
-                }
-
-                else
-                {
-                    Console.Write("Fejl. Prøv igen: ");
-                    inputNotGood = true;
-                }
-            }
-            return StringToTest;
-        }
+       
     }
 }
