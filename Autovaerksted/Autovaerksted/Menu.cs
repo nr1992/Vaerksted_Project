@@ -17,22 +17,22 @@ namespace Autovaerksted
                 Console.Clear();
 
                 Console.Write("Fornavn: ");
-                string Firstname = Console.ReadLine();
+                string Firstname = Error_Handler.getStringInput(1,50,true);
 
                 Console.Write("Efternavn: ");
-                string Lastname = Console.ReadLine();
+                string Lastname = Error_Handler.getStringInput(1,50,true);
 
                 Console.Write("Adresse: ");
-                string CustomerAddress = Console.ReadLine();
+                string CustomerAddress =  Error_Handler.getMixedInput(1,50, "a-zA-z0-9., ");
 
                 Console.Write("Postnr: ");
-                int ZipCode = int.Parse(Console.ReadLine());
+                int ZipCode = int.Parse( Error_Handler.getNumberInput(4,4,true);
 
                 Console.Write("Email : ");
-                string Email = Console.ReadLine();
+                string Email =  Error_Handler.getmixedInput(1,255,"a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.@");
 
                 Console.Write("Mobil nummer: ");
-                string Mobile = Console.ReadLine();
+                string Mobile = Error_Handler.getStringInput(8,8,true);
 
                 Console.WriteLine("");
                 Customers.AddCustomer(Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile);
@@ -64,25 +64,25 @@ namespace Autovaerksted
                 Console.Clear();
 
                 Console.Write("Regnr: ");
-                string RegNr = Console.ReadLine();
+                string RegNr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
 
                 Console.Write("Mærke: ");
-                string Brand = Console.ReadLine();
+                string Brand = Error_Handler.getStringInput(1,50,true);
 
                 Console.Write("Model: ");
-                string Model = Console.ReadLine();
+                string Model = Error_Handler.getMixedInput(1,50,"a-zA-z0-9");
 
                 Console.Write("Årgang: ");
-                string CarYear = Console.ReadLine();
+                string CarYear = Error_Handler.getNumberInput(4,4,true);;
 
                 Console.Write("Km: ");
-                int Miles = int.Parse(Console.ReadLine());
+                int Miles = int.Parse(Error_Handler.getNumberInput(1,255, true));
 
                 Console.Write("Brændstoftype : ");
-                string EngineType = Console.ReadLine();
+                string EngineType = Error_Handler.getStringInput(1,6,true);
 
                 Console.Write("Kundenummer: ");
-                int CustomerId = int.Parse(Console.ReadLine());
+                int CustomerId = int.Parse(Error_Handler.getNumberInput(1,255, true));
 
                 Console.WriteLine("");
                 Cars.AddCar(RegNr, Brand, Model, CarYear, Miles, EngineType, CustomerId);
@@ -175,27 +175,27 @@ namespace Autovaerksted
                             string oldReg = Console.ReadLine();
 
                             Console.WriteLine("Indtast nyt regnr:");
-                            string newReg = Console.ReadLine();
+                            string newReg = Error_Handler.getMixedInput(9 ,9, "A-Z0-9");
 
                             Cars.UpdateCar(oldReg, column, newReg);
                             break;
 
                         case UpdateCarColumn.CustomerId:
                             Console.WriteLine("Indtast regnr:");
-                            string regnr = Console.ReadLine();
+                            string regnr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
 
                             Console.WriteLine("Indtast nye kundenummer:");
-                            string newCustomerId = Console.ReadLine();
+                            string newCustomerId = Error_Handler.getNumberInput(1,255,true);
 
                             Cars.UpdateCar(regnr, column, newCustomerId);
                             break;
 
                         case UpdateCarColumn.EngineType:
                             Console.WriteLine("Indtast regnr:");
-                            regnr = Console.ReadLine();
+                            regnr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
 
                             Console.WriteLine("Indtast nye Brændstoftype");
-                            string newCarEngineType = Console.ReadLine();
+                            string newCarEngineType = Error_Handler.getStringInput(1,6,true);
 
                             Cars.UpdateCar(regnr, column, newCarEngineType);
 
@@ -203,10 +203,10 @@ namespace Autovaerksted
 
                         case UpdateCarColumn.Km:
                             Console.WriteLine("Indtast regnr:");
-                            regnr = Console.ReadLine();
+                            regnr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
 
                             Console.WriteLine("Indtast nye km");
-                            string newCarKm = Console.ReadLine();
+                            string newCarKm = Error_Handler.getNumberInput(1,255,true);
 
                             Cars.UpdateCar(regnr, column, newCarKm);
                             break;
