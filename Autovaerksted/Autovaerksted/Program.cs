@@ -24,6 +24,8 @@ namespace Autovaerksted
                 Console.WriteLine("5. Opdater Bil");
                 Console.WriteLine("6. Vis Kundeoversigt");
                 Console.WriteLine("7. Vis Bil");
+                Console.WriteLine("8. Opret et værkstedsbesøg");
+                Console.WriteLine("9. Slet et værkstedsbesøg");
 
 
 
@@ -57,6 +59,10 @@ namespace Autovaerksted
 
                     case "7":
                         Menu.ShowCarMenu();
+                        break;
+
+                    case "8":
+                        Menu.AddCaseMenu();
                         break;
 
                     default:

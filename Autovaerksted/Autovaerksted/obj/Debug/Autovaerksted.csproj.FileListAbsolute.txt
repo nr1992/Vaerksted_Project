@@ -10,3 +10,9 @@ C:\Users\nr\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\obj\Debug
 C:\Users\nr\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.pdb
 C:\Users\nr\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\bin\Debug\Autovaerksted.exe
 C:\Users\nr\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\bin\Debug\Autovaerksted.pdb
+C:\Users\Jonas Christensen\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\bin\Debug\Autovaerksted.exe
+C:\Users\Jonas Christensen\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\bin\Debug\Autovaerksted.pdb
+C:\Users\Jonas Christensen\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.csprojAssemblyReference.cache
+C:\Users\Jonas Christensen\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.csproj.CoreCompileInputs.cache
+C:\Users\Jonas Christensen\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.exe
+C:\Users\Jonas Christensen\Source\Repos\Vaerksted_Project\Autovaerksted\Autovaerksted\obj\Debug\Autovaerksted.pdb

@@ -17,22 +17,22 @@ namespace Autovaerksted
                 Console.Clear();
 
                 Console.Write("Fornavn: ");
-                string Firstname = Error_Handler.getStringInput(1,50,true);
+                string Firstname = Error_Handler.getStringInput(1, 50, true);
 
                 Console.Write("Efternavn: ");
-                string Lastname = Error_Handler.getStringInput(1,50,true);
+                string Lastname = Error_Handler.getStringInput(1, 50, true);
 
                 Console.Write("Adresse: ");
-                string CustomerAddress =  Error_Handler.getMixedInput(1,50, "a-zA-z0-9., ");
+                string CustomerAddress = Error_Handler.getMixedInput(1, 50, "a-zA-z0-9., ");
 
                 Console.Write("Postnr: ");
-                int ZipCode = int.Parse( Error_Handler.getNumberInput(4,4,true));
+                int ZipCode = int.Parse(Error_Handler.getNumberInput(4, 4, true));
 
                 Console.Write("Email : ");
-                string Email =  Error_Handler.getMixedInput(1,255,"a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.@");
+                string Email = Error_Handler.getMixedInput(1, 255, "a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.@");
 
                 Console.Write("Mobil nummer: ");
-                string Mobile = Error_Handler.getStringInput(8,8,true);
+                string Mobile = Error_Handler.getStringInput(8, 8, true);
 
                 Console.WriteLine("");
                 Customers.AddCustomer(Firstname, Lastname, CustomerAddress, ZipCode, Email, Mobile);
@@ -64,25 +64,25 @@ namespace Autovaerksted
                 Console.Clear();
 
                 Console.Write("Regnr: ");
-                string RegNr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
+                string RegNr = Error_Handler.getMixedInput(9, 9, "A-Z0-9");
 
                 Console.Write("Mærke: ");
-                string Brand = Error_Handler.getStringInput(1,50,true);
+                string Brand = Error_Handler.getStringInput(1, 50, true);
 
                 Console.Write("Model: ");
-                string Model = Error_Handler.getMixedInput(1,50,"a-zA-z0-9");
+                string Model = Error_Handler.getMixedInput(1, 50, "a-zA-z0-9");
 
                 Console.Write("Årgang: ");
-                string CarYear = Error_Handler.getNumberInput(4,4,true);;
+                string CarYear = Error_Handler.getNumberInput(4, 4, true); ;
 
                 Console.Write("Km: ");
-                int Miles = int.Parse(Error_Handler.getNumberInput(1,255, true));
+                int Miles = int.Parse(Error_Handler.getNumberInput(1, 255, true));
 
                 Console.Write("Brændstoftype : ");
-                string EngineType = Error_Handler.getStringInput(1,6,true);
+                string EngineType = Error_Handler.getStringInput(1, 6, true);
 
                 Console.Write("Kundenummer: ");
-                int CustomerId = int.Parse(Error_Handler.getNumberInput(1,255, true));
+                int CustomerId = int.Parse(Error_Handler.getNumberInput(1, 255, true));
 
                 Console.WriteLine("");
                 Cars.AddCar(RegNr, Brand, Model, CarYear, Miles, EngineType, CustomerId);
@@ -135,7 +135,7 @@ namespace Autovaerksted
 
             if (Cars.ShowCarData(Console.ReadLine()) > 0)
             {
-                Console.WriteLine("Vælg derefter hvilken en af bil du vil slette efter regnr!");
+                Console.WriteLine("Vælg derefter hvilken bil du vil slette efter regnr!");
 
                 Cars.DeleteCar((Console.ReadLine()));
             }
@@ -175,27 +175,27 @@ namespace Autovaerksted
                             string oldReg = Console.ReadLine();
 
                             Console.WriteLine("Indtast nyt regnr:");
-                            string newReg = Error_Handler.getMixedInput(9 ,9, "A-Z0-9");
+                            string newReg = Error_Handler.getMixedInput(9, 9, "A-Z0-9");
 
                             Cars.UpdateCar(oldReg, column, newReg);
                             break;
 
                         case UpdateCarColumn.CustomerId:
                             Console.WriteLine("Indtast regnr:");
-                            string regnr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
+                            string regnr = Error_Handler.getMixedInput(9, 9, "A-Z0-9");
 
                             Console.WriteLine("Indtast nye kundenummer:");
-                            string newCustomerId = Error_Handler.getNumberInput(1,255,true);
+                            string newCustomerId = Error_Handler.getNumberInput(1, 255, true);
 
                             Cars.UpdateCar(regnr, column, newCustomerId);
                             break;
 
                         case UpdateCarColumn.EngineType:
                             Console.WriteLine("Indtast regnr:");
-                            regnr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
+                            regnr = Error_Handler.getMixedInput(9, 9, "A-Z0-9");
 
                             Console.WriteLine("Indtast nye Brændstoftype");
-                            string newCarEngineType = Error_Handler.getStringInput(1,6,true);
+                            string newCarEngineType = Error_Handler.getStringInput(1, 6, true);
 
                             Cars.UpdateCar(regnr, column, newCarEngineType);
 
@@ -203,10 +203,10 @@ namespace Autovaerksted
 
                         case UpdateCarColumn.Km:
                             Console.WriteLine("Indtast regnr:");
-                            regnr = Error_Handler.getMixedInput(9,9,"A-Z0-9");
+                            regnr = Error_Handler.getMixedInput(9, 9, "A-Z0-9");
 
                             Console.WriteLine("Indtast nye km");
-                            string newCarKm = Error_Handler.getNumberInput(1,255,true);
+                            string newCarKm = Error_Handler.getNumberInput(1, 255, true);
 
                             Cars.UpdateCar(regnr, column, newCarKm);
                             break;
@@ -270,7 +270,59 @@ namespace Autovaerksted
             {
                 Console.WriteLine("ingen biler");
             }
-           
+
+            Console.WriteLine("Tryk enter for at gå tilbage til menuen!");
+            Console.ReadKey();
+        }
+        #endregion
+
+        #region AddCaseMenu
+
+        public static void AddCaseMenu()
+        {
+            bool repeat;
+
+            do
+            {
+                Console.Clear();
+
+                Console.Write("Regnr: ");
+                string RegNr = Error_Handler.getMixedInput(9, 9, "A-Z0-9");
+
+                Console.WriteLine("");
+                Cases.AddCase(RegNr);
+
+                Console.WriteLine("Tilføj en case mere? Tryk 1.");
+                Console.WriteLine("Gå tilbage til main menu? - Tryk på en anden knap.");
+                ConsoleKeyInfo keyPressed = Console.ReadKey();
+                if (keyPressed.Key == ConsoleKey.D1 || keyPressed.Key == ConsoleKey.NumPad1)
+                {
+                    repeat = true;
+                }
+                else
+                {
+                    repeat = false;
+                }
+            }
+            while (repeat);
+        }
+        #endregion
+
+        #region DeleteCaseMenu
+        public static void DeleteCaseMenu()
+        {
+            Console.WriteLine("Søg efter den case du gerne vil slette!");
+
+            if (Cases.ShowCaseData(Console.ReadLine()) > 0)
+            {
+                Console.WriteLine("Vælg derefter hvilken case du vil slette efter CaseNr!");
+
+                Cases.DeleteCases((Console.ReadLine()));
+            }
+            else
+            {
+                Console.WriteLine("ingen cases");
+            }
             Console.WriteLine("Tryk enter for at gå tilbage til menuen!");
             Console.ReadKey();
         }
