@@ -26,10 +26,10 @@ namespace Autovaerksted
                 string CustomerAddress =  Error_Handler.getMixedInput(1,50, "a-zA-z0-9., ");
 
                 Console.Write("Postnr: ");
-                int ZipCode = int.Parse( Error_Handler.getNumberInput(4,4,true);
+                int ZipCode = int.Parse( Error_Handler.getNumberInput(4,4,true));
 
                 Console.Write("Email : ");
-                string Email =  Error_Handler.getmixedInput(1,255,"a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.@");
+                string Email =  Error_Handler.getMixedInput(1,255,"a-zA-Z0-9!#$%&'*+-/=?^_`{|}~.@");
 
                 Console.Write("Mobil nummer: ");
                 string Mobile = Error_Handler.getStringInput(8,8,true);
