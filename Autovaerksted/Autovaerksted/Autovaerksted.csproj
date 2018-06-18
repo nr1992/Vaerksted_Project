@@ -43,6 +43,7 @@
     <Compile Include="Cars.cs" />
     <Compile Include="Cases.cs" />
     <Compile Include="Customers.cs" />
+    <Compile Include="Error_Handler.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
